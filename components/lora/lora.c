@@ -501,6 +501,15 @@ lora_set_sync_word(int sw)
 }
 
 /**
+ * Get radio sync word.
+ */
+int 
+lora_get_sync_word(void)
+{
+   return lora_read_reg(REG_SYNC_WORD);
+}
+
+/**
  * Enable appending/verifying packet CRC.
  */
 void 
@@ -761,11 +770,15 @@ lora_close(void)
 void 
 lora_dump_registers(void)
 {
+   #define REG_MAX 0x40
    int i;
-   printf("00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F\n");
+   printf("sx127x registers:\n");
+   for (i=0; i<REG_MAX; i++) {
+      printf("%02X ", i);
+   }
+   printf("\n");
    for(i=0; i<0x40; i++) {
       printf("%02X ", lora_read_reg(i));
-      if((i & 0x0f) == 0x0f) printf("\n");
    }
    printf("\n");
 }

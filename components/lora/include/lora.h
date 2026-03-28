@@ -20,6 +20,7 @@ void lora_set_coding_rate(int cr);
 int lora_get_coding_rate(void);
 void lora_set_preamble_length(long length);
 long lora_get_preamble_length(void);
+int lora_get_sync_word(void);
 void lora_set_sync_word(int sw);
 void lora_enable_crc(void);
 void lora_disable_crc(void);
